@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block horizontal_navigation %}
+        <ul></ul>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/">Domov</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">The cool stuff</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/kalkulator">Kalkulator</a>
+                    <a class="dropdown-item" href="/bmicalc">BMI Kalkulator</a>
+              </div>
+            </li>
+
+        </ul>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/sporocila">Preglej sporocila</a>
+            </li>
+        </ul>
+
+{% endblock horizontal_navigation %}
+
+{% block vertical_navigation %}
+
+<ul class="nav flex-column">
+
+    {% for br in brands %}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ br.brand }}</a>
+
+
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {% for br2 in brands2 %}
+                    {% if br.brand|string() ==   br2.brand|string() %}
+                        <a class="dropdown-item" href="/">{{ br2.type }} ( {{ br2.regno }})</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </li>
+    {% endfor %}
+
+</ul>
+
+{% endblock vertical_navigation %}
+
+
+
+{% block content %}
+
+{% endblock content %}
